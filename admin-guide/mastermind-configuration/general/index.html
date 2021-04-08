@@ -413,13 +413,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#waldur-core-settings" class="md-nav__link">
-    Waldur Core settings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#admin-dashboard-configuration" class="md-nav__link">
     Admin dashboard configuration
   </a>
@@ -491,6 +484,18 @@
     <li class="md-nav__item">
       <a href="../../../api/" class="md-nav__link">
         Index
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/authentication/" class="md-nav__link">
+        Authentication
       </a>
     </li>
   
@@ -744,13 +749,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#waldur-core-settings" class="md-nav__link">
-    Waldur Core settings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#admin-dashboard-configuration" class="md-nav__link">
     Admin dashboard configuration
   </a>
@@ -788,7 +786,7 @@
 <p>Outline:</p>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#waldur-core-settings">Waldur Core settings</a></li>
+<li><a href="#waldur-core-settings">Waldur settings</a></li>
 <li><a href="#admin-dashboard-configuration">Admin dashboard configuration</a></li>
 <li><a href="#custom-templates-configuration">Custom templates configuration</a></li>
 <li><a href="#local-time-zone-configuration">Local time zone configuration</a></li>
@@ -796,140 +794,20 @@
 <h2 id="introduction">Introduction</h2>
 <p>Waldur is a <a href="https://www.djangoproject.com">Django</a>-based application, so configuration is done by modifying <code>settings.py</code> file.</p>
 <p>If you want to configure options related to Django, such as tune caches, database connection, configure custom logging, etc, please refer to <a href="https://docs.djangoproject.com/en/2.2/">Django documentation</a>.</p>
-<p>Configuration for Waldur Core is namespaced inside a single Django setting, named <code>WALDUR_CORE</code>. Usually each plugin's settings are namespaced, so please refer to plugin documentation for details.</p>
-<p>Basic configuration might look like this:
-<div class="highlight"><pre><span></span><code><span class="n">WALDUR_CORE</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="s1">&#39;ENABLE_GEOIP&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-   <span class="s1">&#39;EXTENSIONS_AUTOREGISTER&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-   <span class="s1">&#39;GOOGLE_API&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;Android&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">&#39;server_key&#39;</span><span class="p">:</span> <span class="s1">&#39;AIzaSyA2_7UaVIxXfKeFvxTjQNZbrzkXG9OTCkg&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="s1">&#39;iOS&#39;</span><span class="p">:</span> <span class="p">{</span>
-             <span class="s1">&#39;server_key&#39;</span><span class="p">:</span> <span class="s1">&#39;AIzaSyA34zlG_y5uHOe2FmcJKwfk2vG-3RW05vk&#39;</span><span class="p">,</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;SHOW_ALL_USERS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s1">&#39;OWNER_CAN_MANAGE_CUSTOMER&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s1">&#39;CREATE_DEFAULT_PROJECT_ON_ORGANIZATION_CREATION&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s1">&#39;TOKEN_KEY&#39;</span><span class="p">:</span> <span class="s1">&#39;x-auth-token&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;TOKEN_LIFETIME&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-    <span class="s1">&#39;SITE_NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;Waldur MasterMind&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;COUNTRIES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EE&#39;</span><span class="p">,</span> <span class="s1">&#39;LV&#39;</span><span class="p">,</span> <span class="s1">&#39;LT&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;NOTIFICATIONS_PROFILE_CHANGES&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;ENABLED&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s1">&#39;FIELDS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;phone_number&#39;</span><span class="p">,</span> <span class="s1">&#39;job_title&#39;</span><span class="p">)</span>
-    <span class="p">},</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p>Waldur will send notifications from email address specified in <code>DEFAULT_FROM_EMAIL</code> variable. for example,
-<div class="highlight"><pre><span></span><code><span class="n">DEFAULT_FROM_EMAIL</span> <span class="o">=</span> <span class="s1">&#39;noreply@example.com&#39;</span>
-</code></pre></div></p>
-<h2 id="waldur-core-settings">Waldur Core settings</h2>
-<ul>
-<li>
-<p><code>ALLOW_SIGNUP_WITHOUT_INVITATION</code> is disabled by default. Set to <code>True</code> to enable signup by invitation only.</p>
-</li>
-<li>
-<p><code>AUTHENTICATION_METHODS</code> is a list of enabled authentication methods. It allows you to restrict enabled authentication methods.</p>
-</li>
-<li>
-<p><code>BACKEND_FIELDS_EDITABLE</code> allows to control <code>/admin</code> writable fields. If this flag is disabled, it is impossible to edit any field that corresponds to backend value via <code>/admin</code>. Such restriction allows to save information from corruption. Flag is enabled by default.</p>
-</li>
-<li>
-<p><code>COMPANY_TYPES</code> specifies list of available company types, it is used in organization creation dialog. By default <em>Ministry</em>, <em>Private company</em>, <em>Public company</em>, <em>Government owned company</em> are available.</p>
-</li>
-<li>
-<p><code>COUNTRIES</code> list is used in organization creation dialog in order to limit country choices to predefined set.</p>
-</li>
-<li>
-<p><code>CREATE_DEFAULT_PROJECT_ON_ORGANIZATION_CREATION</code> enables generation of the first project on organization creation.</p>
-</li>
-<li>
-<p><code>CURRENCY_NAME</code> is used in marketplace order details and invoice for currency formatting.</p>
-</li>
-<li>
-<p><code>ENABLE_ACCOUNTING_START_DATE</code> allows to enable accounting only for organizations using value of <code>accounting_start_date</code> field. Disabled by default.</p>
-</li>
-<li>
-<p><code>ENABLE_GEOIP</code> indicates whether geolocation is enabled (boolean). Enabled by default.</p>
-</li>
-<li>
-<p><code>EXTENSIONS_AUTOREGISTER</code> defines whether extensions should be automatically registered (boolean).</p>
-</li>
-<li>
-<p><code>GOOGLE_API</code> is settings dictionary for Google Cloud Messaging:</p>
-<ul>
-<li><code>Android</code> specifies settings for Android devices.
-server_key is Google Cloud messaging server key.</li>
-<li><code>IOS</code> specifies settings for IOS devices.
-server_key is Google Cloud messaging server key.</li>
-</ul>
-</li>
-<li>
-<p><code>NOTIFICATION_TITLE</code> is string to be displayed in the notification pop-up title.</p>
-</li>
-<li>
-<p><code>INITIAL_CUSTOMER_AGREEMENT_NUMBER</code> allows to tweak initial value of agreement number (<code>4000</code> by default). It is assumed that organization owner should accept terms of services when organization is registered via Waldur HomePort.</p>
-</li>
-<li>
-<p><code>INVITATION_LIFETIME</code> defines for how long invitation remains valid. Default value - <code>1</code> week.</p>
-</li>
-<li>
-<p><code>INVITATIONS_ENABLED</code> allows to enable invitations feature. Enabled by default.</p>
-</li>
-<li>
-<p><code>NATIVE_NAME_ENABLED</code> allows to render native name field in customer and user forms. Disabled by default.</p>
-</li>
-<li>
-<p><code>NOTIFICATIONS_PROFILE_CHANGES</code> allows enabling notifications about profile changes of organization owners and allows selecting, which fields of profile should be tracked.</p>
-</li>
-<li>
-<p><code>OWNER_CAN_MANAGE_CUSTOMER</code> enables organization owners to create an organization (boolean).</p>
-</li>
-<li>
-<p><code>OWNERS_CAN_MANAGE_OWNERS</code> enables organization owners to manage other organization owners, enabled by default.</p>
-</li>
-<li>
-<p><code>ONLY_STAFF_MANAGES_SERVICES</code> allows to restrict provider management only to staff users, disabled by default.
-Please also note, that if this flag is enabled, OpenStack tenant provision &amp; modification would be available for staff users only. It means that organization owners wouldn't be able to manage virtual private clouds.</p>
-</li>
-<li>
-<p><code>SELLER_COUNTRY_CODE</code> specifies seller legal or effective country of registration or residence as an ISO 3166-1 alpha-2 country code. It is used for computing VAT charge rate.</p>
-</li>
-<li>
-<p><code>SHOW_ALL_USERS</code> indicates whether user can see all other users in <code>api/users/</code> endpoint (boolean).</p>
-</li>
-<li>
-<p><code>SITE_NAME</code> is used in email notifications in order to refer to the current deployment in user-friendly way.</p>
-</li>
-<li>
-<p><code>SITE_ADDRESS</code> is used in marketplace order header.</p>
-</li>
-<li>
-<p><code>SITE_EMAIL</code> is used in marketplace order header.</p>
-</li>
-<li>
-<p><code>SITE_PHONE</code> is used in marketplace order header.</p>
-</li>
-<li>
-<p><code>SITE_LOGO</code> is used in marketplace order header.</p>
-</li>
-<li>
-<p><code>TOKEN_KEY</code> is header for token authentication. For example, 'x-auth-token'.</p>
-</li>
-<li>
-<p><code>TOKEN_LIFETIME</code> defines for how long user token should remain valid if there was no action from user (<code>timedelta</code> value, for example <code>timedelta(hours=1)</code>).</p>
-</li>
-<li>
-<p><code>VALIDATE_INVITATION_EMAIL</code> allows to ensure that invitation and user emails match. Disabled by default.</p>
-</li>
-</ul>
+<p>Please consult <a href="configuration-guide.md">configuration guide</a> to learn more.</p>
 <h2 id="admin-dashboard-configuration">Admin dashboard configuration</h2>
 <p>An admin dashboard supports custom links on Quick access panel. For instance, a panel below was configured with one additional link to <strong>https://waldur.com</strong>:</p>
 <p><img alt="admin example" src="../img/admin-example.png" /></p>
 <p>Configuration of custom links is stored under <code>FLUENT_DASHBOARD_QUICK_ACCESS_LINKS</code> settings key and for current example has following structure:
-<div class="highlight"><pre><span></span><code><span class="n">FLUENT_DASHBOARD_QUICK_ACCESS_LINKS</span> <span class="o">=</span> <span class="p">[</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">FLUENT_DASHBOARD_QUICK_ACCESS_LINKS</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span>
    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;[Custom] Waldur - Cloud Service&#39;</span><span class="p">,</span>
    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://waldur.com&#39;</span><span class="p">,</span>
@@ -939,6 +817,7 @@ Please also note, that if this flag is enabled, OpenStack tenant provision &amp;
   <span class="p">},</span>
 <span class="p">]</span>
 </code></pre></div>
+</td></tr></table>
 Here is a short description of link parameters:</p>
 <table>
 <thead>
@@ -983,11 +862,15 @@ Here is a short description of link parameters:</p>
 </tbody>
 </table>
 <p>It is also possible to omit optional fields and add links by specifying only a title and a URL to the generated link.</p>
-<div class="highlight"><pre><span></span><code><span class="n">FLUENT_DASHBOARD_QUICK_ACCESS_LINKS</span> <span class="o">=</span> <span class="p">[</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">FLUENT_DASHBOARD_QUICK_ACCESS_LINKS</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">[</span><span class="s1">&#39;[Custom] Waldur - Cloud Service&#39;</span><span class="p">,</span> <span class="s1">&#39;https://waldur.com&#39;</span><span class="p">],</span>
   <span class="p">[</span><span class="s1">&#39;Find us on GitHub&#39;</span><span class="p">,</span> <span class="s1">&#39;https://github.com/opennode/waldur-core&#39;</span><span class="p">],</span>
 <span class="p">]</span>
 </code></pre></div>
+</td></tr></table>
 <h2 id="custom-templates-configuration">Custom templates configuration</h2>
 <p>To overwrite default templates you should use <a href="https://github.com/jazzband/django-dbtemplates">django-dbtemplates</a>. It allows creation of templates through <code>/admin</code>.</p>
 <h2 id="local-time-zone-configuration">Local time zone configuration</h2>

@@ -1,0 +1,3331 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation of an open-source marketplace platform Waldur. See the latest version at https://docs.waldur.com">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>Configuration guide - Waldur Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+    
+      
+  
+
+
+
+  
+  
+
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-34543419-4","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#waldur_auth_social-plugin" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="Waldur Documentation" class="md-header__button md-logo" aria-label="Waldur Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Waldur Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Waldur Documentation" class="md-nav__button md-logo" aria-label="Waldur Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Waldur Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started.html" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        About
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/contributing.html" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/governance.html" class="md-nav__link">
+        Governance
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/reporting-issues.html" class="md-nav__link">
+        Reporting issues
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/roadmap.html" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/screenshots.html" class="md-nav__link">
+        Screenshots
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/support.html" class="md-nav__link">
+        Support
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Admin guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Admin guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Admin guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture.html" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backups.html" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../checklist-for-production.html" class="md-nav__link">
+        Checklist for Go live
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookie-policy.html" class="md-nav__link">
+        Cookie policy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware-requirements.html" class="md-nav__link">
+        Hardware requirements
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../managing-with-ansible.html" class="md-nav__link">
+        Managing Waldur with Ansible
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+      
+      <label class="md-nav__link" for="__nav_4_7">
+        Deployment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deployment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/docker-compose.html" class="md-nav__link">
+        Waldur Docker-compose deployment
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/helm.html" class="md-nav__link">
+        Helm
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" >
+      
+      <label class="md-nav__link" for="__nav_4_8">
+        Identities
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Identities" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Identities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identities/LDAP.html" class="md-nav__link">
+        LDAP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identities/TARA.html" class="md-nav__link">
+        TARA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identities/eduGAIN.html" class="md-nav__link">
+        eduGAIN
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identities/eduTEAMS.html" class="md-nav__link">
+        eduTeams
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identities/freeipa.html" class="md-nav__link">
+        FreeIPA
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identities/keycloak.html" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identities/summary.html" class="md-nav__link">
+        Summary
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_9" type="checkbox" id="__nav_4_9" checked>
+      
+      <label class="md-nav__link" for="__nav_4_9">
+        Mastermind configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Mastermind configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_9">
+          <span class="md-nav__icon md-icon"></span>
+          Mastermind configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configuration guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="configuration-guide.html" class="md-nav__link md-nav__link--active">
+        Configuration guide
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_auth_social-plugin" class="md-nav__link">
+    WALDUR_AUTH_SOCIAL plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_AUTH_SOCIAL plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_auth_url" class="md-nav__link">
+    EDUTEAMS_AUTH_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_client_id" class="md-nav__link">
+    EDUTEAMS_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_label" class="md-nav__link">
+    EDUTEAMS_LABEL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_secret" class="md-nav__link">
+    EDUTEAMS_SECRET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_token_url" class="md-nav__link">
+    EDUTEAMS_TOKEN_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_userinfo_url" class="md-nav__link">
+    EDUTEAMS_USERINFO_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_eduteams_sync" class="md-nav__link">
+    ENABLE_EDUTEAMS_SYNC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facebook_client_id" class="md-nav__link">
+    FACEBOOK_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facebook_secret" class="md-nav__link">
+    FACEBOOK_SECRET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_auth_url" class="md-nav__link">
+    KEYCLOAK_AUTH_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_client_id" class="md-nav__link">
+    KEYCLOAK_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_label" class="md-nav__link">
+    KEYCLOAK_LABEL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_secret" class="md-nav__link">
+    KEYCLOAK_SECRET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_token_url" class="md-nav__link">
+    KEYCLOAK_TOKEN_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_userinfo_url" class="md-nav__link">
+    KEYCLOAK_USERINFO_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote_eduteams_access_token" class="md-nav__link">
+    REMOTE_EDUTEAMS_ACCESS_TOKEN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote_eduteams_token_url" class="md-nav__link">
+    REMOTE_EDUTEAMS_TOKEN_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote_eduteams_userinfo_url" class="md-nav__link">
+    REMOTE_EDUTEAMS_USERINFO_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smartidee_client_id" class="md-nav__link">
+    SMARTIDEE_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smartidee_secret" class="md-nav__link">
+    SMARTIDEE_SECRET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tara_client_id" class="md-nav__link">
+    TARA_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tara_label" class="md-nav__link">
+    TARA_LABEL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tara_sandbox" class="md-nav__link">
+    TARA_SANDBOX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tara_secret" class="md-nav__link">
+    TARA_SECRET
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_core-plugin" class="md-nav__link">
+    WALDUR_CORE plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_CORE plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allow_signup_without_invitation" class="md-nav__link">
+    ALLOW_SIGNUP_WITHOUT_INVITATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attachment_link_max_age" class="md-nav__link">
+    ATTACHMENT_LINK_MAX_AGE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication_methods" class="md-nav__link">
+    AUTHENTICATION_METHODS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend_fields_editable" class="md-nav__link">
+    BACKEND_FIELDS_EDITABLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#countries" class="md-nav__link">
+    COUNTRIES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_default_project_on_organization_creation" class="md-nav__link">
+    CREATE_DEFAULT_PROJECT_ON_ORGANIZATION_CREATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#currency_name" class="md-nav__link">
+    CURRENCY_NAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email_change_max_age" class="md-nav__link">
+    EMAIL_CHANGE_MAX_AGE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_accounting_start_date" class="md-nav__link">
+    ENABLE_ACCOUNTING_START_DATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_geoip" class="md-nav__link">
+    ENABLE_GEOIP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensions_autoregister" class="md-nav__link">
+    EXTENSIONS_AUTOREGISTER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#homeport_url" class="md-nav__link">
+    HOMEPORT_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_chunk_size" class="md-nav__link">
+    HTTP_CHUNK_SIZE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial_customer_agreement_number" class="md-nav__link">
+    INITIAL_CUSTOMER_AGREEMENT_NUMBER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitations_enabled" class="md-nav__link">
+    INVITATIONS_ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitation_create_missing_user" class="md-nav__link">
+    INVITATION_CREATE_MISSING_USER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitation_disable_multiple_roles" class="md-nav__link">
+    INVITATION_DISABLE_MULTIPLE_ROLES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitation_lifetime" class="md-nav__link">
+    INVITATION_LIFETIME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitation_max_age" class="md-nav__link">
+    INVITATION_MAX_AGE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging_report_directory" class="md-nav__link">
+    LOGGING_REPORT_DIRECTORY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging_report_interval" class="md-nav__link">
+    LOGGING_REPORT_INTERVAL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#native_name_enabled" class="md-nav__link">
+    NATIVE_NAME_ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications_profile_changes" class="md-nav__link">
+    NOTIFICATIONS_PROFILE_CHANGES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification_subject" class="md-nav__link">
+    NOTIFICATION_SUBJECT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#only_staff_can_invite_users" class="md-nav__link">
+    ONLY_STAFF_CAN_INVITE_USERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#only_staff_manages_services" class="md-nav__link">
+    ONLY_STAFF_MANAGES_SERVICES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owners_can_manage_owners" class="md-nav__link">
+    OWNERS_CAN_MANAGE_OWNERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner_can_manage_customer" class="md-nav__link">
+    OWNER_CAN_MANAGE_CUSTOMER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protect_user_details_for_registration_methods" class="md-nav__link">
+    PROTECT_USER_DETAILS_FOR_REGISTRATION_METHODS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seller_country_code" class="md-nav__link">
+    SELLER_COUNTRY_CODE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show_all_users" class="md-nav__link">
+    SHOW_ALL_USERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_address" class="md-nav__link">
+    SITE_ADDRESS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_email" class="md-nav__link">
+    SITE_EMAIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_logo" class="md-nav__link">
+    SITE_LOGO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_name" class="md-nav__link">
+    SITE_NAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_phone" class="md-nav__link">
+    SITE_PHONE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token_key" class="md-nav__link">
+    TOKEN_KEY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token_lifetime" class="md-nav__link">
+    TOKEN_LIFETIME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use_atomic_transaction" class="md-nav__link">
+    USE_ATOMIC_TRANSACTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate_invitation_email" class="md-nav__link">
+    VALIDATE_INVITATION_EMAIL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_freeipa-plugin" class="md-nav__link">
+    WALDUR_FREEIPA plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_FREEIPA plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blacklisted_usernames" class="md-nav__link">
+    BLACKLISTED_USERNAMES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabled" class="md-nav__link">
+    ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupname_prefix" class="md-nav__link">
+    GROUPNAME_PREFIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_synchronization_enabled" class="md-nav__link">
+    GROUP_SYNCHRONIZATION_ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    HOSTNAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password" class="md-nav__link">
+    PASSWORD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#username" class="md-nav__link">
+    USERNAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#username_prefix" class="md-nav__link">
+    USERNAME_PREFIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify_ssl" class="md-nav__link">
+    VERIFY_SSL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_hpc-plugin" class="md-nav__link">
+    WALDUR_HPC plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_HPC plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabled_1" class="md-nav__link">
+    ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_affiliations" class="md-nav__link">
+    EXTERNAL_AFFILIATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_customer_uuid" class="md-nav__link">
+    EXTERNAL_CUSTOMER_UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_email_patterns" class="md-nav__link">
+    EXTERNAL_EMAIL_PATTERNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal_affiliations" class="md-nav__link">
+    INTERNAL_AFFILIATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal_customer_uuid" class="md-nav__link">
+    INTERNAL_CUSTOMER_UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal_email_patterns" class="md-nav__link">
+    INTERNAL_EMAIL_PATTERNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal_limits" class="md-nav__link">
+    INTERNAL_LIMITS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offering_uuid" class="md-nav__link">
+    OFFERING_UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan_uuid" class="md-nav__link">
+    PLAN_UUID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_marketplace-plugin" class="md-nav__link">
+    WALDUR_MARKETPLACE plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_MARKETPLACE plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin_can_approve_order" class="md-nav__link">
+    ADMIN_CAN_APPROVE_ORDER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anonymous_user_can_view_offerings" class="md-nav__link">
+    ANONYMOUS_USER_CAN_VIEW_OFFERINGS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable_sending_notifications_about_resource_update" class="md-nav__link">
+    DISABLE_SENDING_NOTIFICATIONS_ABOUT_RESOURCE_UPDATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_stale_resource_notifications" class="md-nav__link">
+    ENABLE_STALE_RESOURCE_NOTIFICATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manager_can_approve_order" class="md-nav__link">
+    MANAGER_CAN_APPROVE_ORDER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notify_about_resource_change" class="md-nav__link">
+    NOTIFY_ABOUT_RESOURCE_CHANGE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notify_staff_about_approvals" class="md-nav__link">
+    NOTIFY_STAFF_ABOUT_APPROVALS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner_can_approve_order" class="md-nav__link">
+    OWNER_CAN_APPROVE_ORDER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner_can_register_service_provider" class="md-nav__link">
+    OWNER_CAN_REGISTER_SERVICE_PROVIDER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan_template" class="md-nav__link">
+    PLAN_TEMPLATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumbnail_size" class="md-nav__link">
+    THUMBNAIL_SIZE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_pid-plugin" class="md-nav__link">
+    WALDUR_PID plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_PID plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacite" class="md-nav__link">
+    DATACITE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_slurm-plugin" class="md-nav__link">
+    WALDUR_SLURM plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_SLURM plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allocation_prefix" class="md-nav__link">
+    ALLOCATION_PREFIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customer_prefix" class="md-nav__link">
+    CUSTOMER_PREFIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default_limits" class="md-nav__link">
+    DEFAULT_LIMITS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabled_2" class="md-nav__link">
+    ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private_key_path" class="md-nav__link">
+    PRIVATE_KEY_PATH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project_prefix" class="md-nav__link">
+    PROJECT_PREFIX
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-variables" class="md-nav__link">
+    Other variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Other variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default_from_email" class="md-nav__link">
+    DEFAULT_FROM_EMAIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_export_use_transactions" class="md-nav__link">
+    IMPORT_EXPORT_USE_TRANSACTIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipstack_access_key" class="md-nav__link">
+    IPSTACK_ACCESS_KEY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#languages" class="md-nav__link">
+    LANGUAGES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use_protected_url" class="md-nav__link">
+    USE_PROTECTED_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify_webhook_requests" class="md-nav__link">
+    VERIFY_WEBHOOK_REQUESTS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="general.html" class="md-nav__link">
+        General Configuration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="google-calendar.html" class="md-nav__link">
+        Configuration of the Google Calendar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_10" type="checkbox" id="__nav_4_10" >
+      
+      <label class="md-nav__link" for="__nav_4_10">
+        Providers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Providers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          Providers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/adding-an-offering.html" class="md-nav__link">
+        Adding an offering
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/azure.html" class="md-nav__link">
+        Azure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/moab.html" class="md-nav__link">
+        MOAB
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/openstack.html" class="md-nav__link">
+        OpenStack (Tenant)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/remote-waldur.html" class="md-nav__link">
+        Remote Offering
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/slurm.html" class="md-nav__link">
+        SLURM provider
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Integrator guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Integrator guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Integrator guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrator-guide/ansible-module.html" class="md-nav__link">
+        Ansible module for Waldur
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      <label class="md-nav__link" for="__nav_5_2">
+        APIs
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrator-guide/APIs/authentication.html" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        User guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          User guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/index.html" class="md-nav__link">
+        User Guide
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/marketplace.html" class="md-nav__link">
+        Marketplace
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../print_page.html" class="md-nav__link">
+        Print documentation
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_auth_social-plugin" class="md-nav__link">
+    WALDUR_AUTH_SOCIAL plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_AUTH_SOCIAL plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_auth_url" class="md-nav__link">
+    EDUTEAMS_AUTH_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_client_id" class="md-nav__link">
+    EDUTEAMS_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_label" class="md-nav__link">
+    EDUTEAMS_LABEL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_secret" class="md-nav__link">
+    EDUTEAMS_SECRET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_token_url" class="md-nav__link">
+    EDUTEAMS_TOKEN_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eduteams_userinfo_url" class="md-nav__link">
+    EDUTEAMS_USERINFO_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_eduteams_sync" class="md-nav__link">
+    ENABLE_EDUTEAMS_SYNC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facebook_client_id" class="md-nav__link">
+    FACEBOOK_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facebook_secret" class="md-nav__link">
+    FACEBOOK_SECRET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_auth_url" class="md-nav__link">
+    KEYCLOAK_AUTH_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_client_id" class="md-nav__link">
+    KEYCLOAK_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_label" class="md-nav__link">
+    KEYCLOAK_LABEL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_secret" class="md-nav__link">
+    KEYCLOAK_SECRET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_token_url" class="md-nav__link">
+    KEYCLOAK_TOKEN_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak_userinfo_url" class="md-nav__link">
+    KEYCLOAK_USERINFO_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote_eduteams_access_token" class="md-nav__link">
+    REMOTE_EDUTEAMS_ACCESS_TOKEN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote_eduteams_token_url" class="md-nav__link">
+    REMOTE_EDUTEAMS_TOKEN_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote_eduteams_userinfo_url" class="md-nav__link">
+    REMOTE_EDUTEAMS_USERINFO_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smartidee_client_id" class="md-nav__link">
+    SMARTIDEE_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smartidee_secret" class="md-nav__link">
+    SMARTIDEE_SECRET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tara_client_id" class="md-nav__link">
+    TARA_CLIENT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tara_label" class="md-nav__link">
+    TARA_LABEL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tara_sandbox" class="md-nav__link">
+    TARA_SANDBOX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tara_secret" class="md-nav__link">
+    TARA_SECRET
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_core-plugin" class="md-nav__link">
+    WALDUR_CORE plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_CORE plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allow_signup_without_invitation" class="md-nav__link">
+    ALLOW_SIGNUP_WITHOUT_INVITATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attachment_link_max_age" class="md-nav__link">
+    ATTACHMENT_LINK_MAX_AGE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication_methods" class="md-nav__link">
+    AUTHENTICATION_METHODS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend_fields_editable" class="md-nav__link">
+    BACKEND_FIELDS_EDITABLE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#countries" class="md-nav__link">
+    COUNTRIES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_default_project_on_organization_creation" class="md-nav__link">
+    CREATE_DEFAULT_PROJECT_ON_ORGANIZATION_CREATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#currency_name" class="md-nav__link">
+    CURRENCY_NAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email_change_max_age" class="md-nav__link">
+    EMAIL_CHANGE_MAX_AGE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_accounting_start_date" class="md-nav__link">
+    ENABLE_ACCOUNTING_START_DATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_geoip" class="md-nav__link">
+    ENABLE_GEOIP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensions_autoregister" class="md-nav__link">
+    EXTENSIONS_AUTOREGISTER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#homeport_url" class="md-nav__link">
+    HOMEPORT_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_chunk_size" class="md-nav__link">
+    HTTP_CHUNK_SIZE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial_customer_agreement_number" class="md-nav__link">
+    INITIAL_CUSTOMER_AGREEMENT_NUMBER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitations_enabled" class="md-nav__link">
+    INVITATIONS_ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitation_create_missing_user" class="md-nav__link">
+    INVITATION_CREATE_MISSING_USER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitation_disable_multiple_roles" class="md-nav__link">
+    INVITATION_DISABLE_MULTIPLE_ROLES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitation_lifetime" class="md-nav__link">
+    INVITATION_LIFETIME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitation_max_age" class="md-nav__link">
+    INVITATION_MAX_AGE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging_report_directory" class="md-nav__link">
+    LOGGING_REPORT_DIRECTORY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging_report_interval" class="md-nav__link">
+    LOGGING_REPORT_INTERVAL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#native_name_enabled" class="md-nav__link">
+    NATIVE_NAME_ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications_profile_changes" class="md-nav__link">
+    NOTIFICATIONS_PROFILE_CHANGES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification_subject" class="md-nav__link">
+    NOTIFICATION_SUBJECT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#only_staff_can_invite_users" class="md-nav__link">
+    ONLY_STAFF_CAN_INVITE_USERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#only_staff_manages_services" class="md-nav__link">
+    ONLY_STAFF_MANAGES_SERVICES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owners_can_manage_owners" class="md-nav__link">
+    OWNERS_CAN_MANAGE_OWNERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner_can_manage_customer" class="md-nav__link">
+    OWNER_CAN_MANAGE_CUSTOMER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protect_user_details_for_registration_methods" class="md-nav__link">
+    PROTECT_USER_DETAILS_FOR_REGISTRATION_METHODS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seller_country_code" class="md-nav__link">
+    SELLER_COUNTRY_CODE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show_all_users" class="md-nav__link">
+    SHOW_ALL_USERS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_address" class="md-nav__link">
+    SITE_ADDRESS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_email" class="md-nav__link">
+    SITE_EMAIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_logo" class="md-nav__link">
+    SITE_LOGO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_name" class="md-nav__link">
+    SITE_NAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site_phone" class="md-nav__link">
+    SITE_PHONE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token_key" class="md-nav__link">
+    TOKEN_KEY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token_lifetime" class="md-nav__link">
+    TOKEN_LIFETIME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use_atomic_transaction" class="md-nav__link">
+    USE_ATOMIC_TRANSACTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate_invitation_email" class="md-nav__link">
+    VALIDATE_INVITATION_EMAIL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_freeipa-plugin" class="md-nav__link">
+    WALDUR_FREEIPA plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_FREEIPA plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blacklisted_usernames" class="md-nav__link">
+    BLACKLISTED_USERNAMES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabled" class="md-nav__link">
+    ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupname_prefix" class="md-nav__link">
+    GROUPNAME_PREFIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_synchronization_enabled" class="md-nav__link">
+    GROUP_SYNCHRONIZATION_ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    HOSTNAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password" class="md-nav__link">
+    PASSWORD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#username" class="md-nav__link">
+    USERNAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#username_prefix" class="md-nav__link">
+    USERNAME_PREFIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify_ssl" class="md-nav__link">
+    VERIFY_SSL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_hpc-plugin" class="md-nav__link">
+    WALDUR_HPC plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_HPC plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabled_1" class="md-nav__link">
+    ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_affiliations" class="md-nav__link">
+    EXTERNAL_AFFILIATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_customer_uuid" class="md-nav__link">
+    EXTERNAL_CUSTOMER_UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_email_patterns" class="md-nav__link">
+    EXTERNAL_EMAIL_PATTERNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal_affiliations" class="md-nav__link">
+    INTERNAL_AFFILIATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal_customer_uuid" class="md-nav__link">
+    INTERNAL_CUSTOMER_UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal_email_patterns" class="md-nav__link">
+    INTERNAL_EMAIL_PATTERNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal_limits" class="md-nav__link">
+    INTERNAL_LIMITS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offering_uuid" class="md-nav__link">
+    OFFERING_UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan_uuid" class="md-nav__link">
+    PLAN_UUID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_marketplace-plugin" class="md-nav__link">
+    WALDUR_MARKETPLACE plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_MARKETPLACE plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admin_can_approve_order" class="md-nav__link">
+    ADMIN_CAN_APPROVE_ORDER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anonymous_user_can_view_offerings" class="md-nav__link">
+    ANONYMOUS_USER_CAN_VIEW_OFFERINGS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable_sending_notifications_about_resource_update" class="md-nav__link">
+    DISABLE_SENDING_NOTIFICATIONS_ABOUT_RESOURCE_UPDATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable_stale_resource_notifications" class="md-nav__link">
+    ENABLE_STALE_RESOURCE_NOTIFICATIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manager_can_approve_order" class="md-nav__link">
+    MANAGER_CAN_APPROVE_ORDER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notify_about_resource_change" class="md-nav__link">
+    NOTIFY_ABOUT_RESOURCE_CHANGE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notify_staff_about_approvals" class="md-nav__link">
+    NOTIFY_STAFF_ABOUT_APPROVALS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner_can_approve_order" class="md-nav__link">
+    OWNER_CAN_APPROVE_ORDER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner_can_register_service_provider" class="md-nav__link">
+    OWNER_CAN_REGISTER_SERVICE_PROVIDER
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan_template" class="md-nav__link">
+    PLAN_TEMPLATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumbnail_size" class="md-nav__link">
+    THUMBNAIL_SIZE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_pid-plugin" class="md-nav__link">
+    WALDUR_PID plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_PID plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacite" class="md-nav__link">
+    DATACITE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waldur_slurm-plugin" class="md-nav__link">
+    WALDUR_SLURM plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="WALDUR_SLURM plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allocation_prefix" class="md-nav__link">
+    ALLOCATION_PREFIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customer_prefix" class="md-nav__link">
+    CUSTOMER_PREFIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default_limits" class="md-nav__link">
+    DEFAULT_LIMITS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabled_2" class="md-nav__link">
+    ENABLED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private_key_path" class="md-nav__link">
+    PRIVATE_KEY_PATH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project_prefix" class="md-nav__link">
+    PROJECT_PREFIX
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-variables" class="md-nav__link">
+    Other variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Other variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default_from_email" class="md-nav__link">
+    DEFAULT_FROM_EMAIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_export_use_transactions" class="md-nav__link">
+    IMPORT_EXPORT_USE_TRANSACTIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipstack_access_key" class="md-nav__link">
+    IPSTACK_ACCESS_KEY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#languages" class="md-nav__link">
+    LANGUAGES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use_protected_url" class="md-nav__link">
+    USE_PROTECTED_URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify_webhook_requests" class="md-nav__link">
+    VERIFY_WEBHOOK_REQUESTS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="configuration-guide.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
+              
+                
+                
+                  <h1>Configuration guide</h1>
+                
+                <h2 id="waldur_auth_social-plugin">WALDUR_AUTH_SOCIAL plugin</h2>
+<p>Default value: 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">WALDUR_AUTH_SOCIAL</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;EDUTEAMS_AUTH_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;https://proxy.acc.eduteams.org/saml2sp/OIDC/authorization&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;EDUTEAMS_CLIENT_ID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;EDUTEAMS_LABEL&#39;</span><span class="p">:</span> <span class="s1">&#39;Eduteams&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;EDUTEAMS_SECRET&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;EDUTEAMS_TOKEN_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;https://proxy.acc.eduteams.org/OIDC/token&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;EDUTEAMS_USERINFO_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;https://proxy.acc.eduteams.org/OIDC/userinfo&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;ENABLE_EDUTEAMS_SYNC&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;FACEBOOK_CLIENT_ID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;FACEBOOK_SECRET&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;KEYCLOAK_AUTH_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;KEYCLOAK_CLIENT_ID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;KEYCLOAK_LABEL&#39;</span><span class="p">:</span> <span class="s1">&#39;Keycloak&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;KEYCLOAK_SECRET&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;KEYCLOAK_TOKEN_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;KEYCLOAK_USERINFO_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;REMOTE_EDUTEAMS_ACCESS_TOKEN&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;REMOTE_EDUTEAMS_TOKEN_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;https://proxy.acc.researcher-access.org/OIDC/token&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;REMOTE_EDUTEAMS_USERINFO_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;https://proxy.acc.researcher-access.org/api/userinfo&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;SMARTIDEE_CLIENT_ID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;SMARTIDEE_SECRET&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;TARA_CLIENT_ID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;TARA_LABEL&#39;</span><span class="p">:</span> <span class="s1">&#39;Riigi Autentimisteenus&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;TARA_SANDBOX&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;TARA_SECRET&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="eduteams_auth_url">EDUTEAMS_AUTH_URL</h4>
+<p>Type: str</p>
+<p>The authorization endpoint performs authentication of the end-user. This is done by redirecting the user agent to this endpoint.</p>
+<h4 id="eduteams_client_id">EDUTEAMS_CLIENT_ID</h4>
+<p>Type: str</p>
+<p>ID of application used for OAuth authentication.</p>
+<h4 id="eduteams_label">EDUTEAMS_LABEL</h4>
+<p>Type: str</p>
+<p>Label is used by HomePort for rendering login button.</p>
+<h4 id="eduteams_secret">EDUTEAMS_SECRET</h4>
+<p>Type: str</p>
+<p>Application secret key.</p>
+<h4 id="eduteams_token_url">EDUTEAMS_TOKEN_URL</h4>
+<p>Type: str</p>
+<p>The token endpoint is used to obtain tokens.</p>
+<h4 id="eduteams_userinfo_url">EDUTEAMS_USERINFO_URL</h4>
+<p>Type: str</p>
+<p>The userinfo endpoint returns standard claims about the authenticated user, and is protected by a bearer token.</p>
+<h4 id="enable_eduteams_sync">ENABLE_EDUTEAMS_SYNC</h4>
+<p>Type: bool</p>
+<p>Enable EduTeams synchronization with remote Waldur.</p>
+<h4 id="facebook_client_id">FACEBOOK_CLIENT_ID</h4>
+<p>Type: str</p>
+<p>ID of application used for OAuth authentication.</p>
+<h4 id="facebook_secret">FACEBOOK_SECRET</h4>
+<p>Type: str</p>
+<p>Application secret key.</p>
+<h4 id="keycloak_auth_url">KEYCLOAK_AUTH_URL</h4>
+<p>Type: str</p>
+<p>The authorization endpoint performs authentication of the end-user. This is done by redirecting the user agent to this endpoint.</p>
+<h4 id="keycloak_client_id">KEYCLOAK_CLIENT_ID</h4>
+<p>Type: str</p>
+<p>ID of application used for OAuth authentication.</p>
+<h4 id="keycloak_label">KEYCLOAK_LABEL</h4>
+<p>Type: str</p>
+<p>Label is used by HomePort for rendering login button.</p>
+<h4 id="keycloak_secret">KEYCLOAK_SECRET</h4>
+<p>Type: str</p>
+<p>Application secret key.</p>
+<h4 id="keycloak_token_url">KEYCLOAK_TOKEN_URL</h4>
+<p>Type: str</p>
+<p>The token endpoint is used to obtain tokens.</p>
+<h4 id="keycloak_userinfo_url">KEYCLOAK_USERINFO_URL</h4>
+<p>Type: str</p>
+<p>The userinfo endpoint returns standard claims about the authenticated user, and is protected by a bearer token.</p>
+<h4 id="remote_eduteams_access_token">REMOTE_EDUTEAMS_ACCESS_TOKEN</h4>
+<p>Type: str</p>
+<p>Token is used to authenticate against user info endpoint.</p>
+<h4 id="remote_eduteams_token_url">REMOTE_EDUTEAMS_TOKEN_URL</h4>
+<p>Type: str</p>
+<p>The token endpoint is used to obtain tokens.</p>
+<h4 id="remote_eduteams_userinfo_url">REMOTE_EDUTEAMS_USERINFO_URL</h4>
+<p>Type: str</p>
+<p>It allows to get user data based on userid aka CUID.</p>
+<h4 id="smartidee_client_id">SMARTIDEE_CLIENT_ID</h4>
+<p>Type: str</p>
+<p>ID of application used for OAuth authentication.</p>
+<h4 id="smartidee_secret">SMARTIDEE_SECRET</h4>
+<p>Type: str</p>
+<p>Application secret key.</p>
+<h4 id="tara_client_id">TARA_CLIENT_ID</h4>
+<p>Type: str</p>
+<p>ID of application used for OAuth authentication.</p>
+<h4 id="tara_label">TARA_LABEL</h4>
+<p>Type: str</p>
+<p>You may set it to eIDAS, SmartID or MobileID make it more clear to the user which exact identity provider is configured or preferred for service provider.</p>
+<h4 id="tara_sandbox">TARA_SANDBOX</h4>
+<p>Type: bool</p>
+<p>You should set it to False in order to switch to production mode.</p>
+<h4 id="tara_secret">TARA_SECRET</h4>
+<p>Type: str</p>
+<p>Application secret key.</p>
+<h2 id="waldur_core-plugin">WALDUR_CORE plugin</h2>
+<p>Default value: 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">WALDUR_CORE</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ALLOW_SIGNUP_WITHOUT_INVITATION&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;ATTACHMENT_LINK_MAX_AGE&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">3600</span><span class="p">),</span>
+ <span class="s1">&#39;AUTHENTICATION_METHODS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LOCAL_SIGNIN&#39;</span><span class="p">],</span>
+ <span class="s1">&#39;BACKEND_FIELDS_EDITABLE&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;COUNTRIES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EE&#39;</span><span class="p">,</span> <span class="s1">&#39;LV&#39;</span><span class="p">,</span> <span class="s1">&#39;LT&#39;</span><span class="p">],</span>
+ <span class="s1">&#39;CREATE_DEFAULT_PROJECT_ON_ORGANIZATION_CREATION&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;CURRENCY_NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;EMAIL_CHANGE_MAX_AGE&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+ <span class="s1">&#39;ENABLE_ACCOUNTING_START_DATE&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;ENABLE_GEOIP&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;EXTENSIONS_AUTOREGISTER&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;HOMEPORT_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;https://example.com/&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;HTTP_CHUNK_SIZE&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+ <span class="s1">&#39;INITIAL_CUSTOMER_AGREEMENT_NUMBER&#39;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+ <span class="s1">&#39;INVITATIONS_ENABLED&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;INVITATION_CREATE_MISSING_USER&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;INVITATION_DISABLE_MULTIPLE_ROLES&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;INVITATION_LIFETIME&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">),</span>
+ <span class="s1">&#39;INVITATION_MAX_AGE&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;LOGGING_REPORT_DIRECTORY&#39;</span><span class="p">:</span> <span class="s1">&#39;/var/log/waldur&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;LOGGING_REPORT_INTERVAL&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">),</span>
+ <span class="s1">&#39;NATIVE_NAME_ENABLED&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;NOTIFICATIONS_PROFILE_CHANGES&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;ENABLED&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                                   <span class="s1">&#39;FIELDS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span>
+                                              <span class="s1">&#39;phone_number&#39;</span><span class="p">,</span>
+                                              <span class="s1">&#39;job_title&#39;</span><span class="p">)},</span>
+ <span class="s1">&#39;NOTIFICATION_SUBJECT&#39;</span><span class="p">:</span> <span class="s1">&#39;Notifications from Waldur&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;ONLY_STAFF_CAN_INVITE_USERS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;ONLY_STAFF_MANAGES_SERVICES&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;OWNERS_CAN_MANAGE_OWNERS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;OWNER_CAN_MANAGE_CUSTOMER&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;PROTECT_USER_DETAILS_FOR_REGISTRATION_METHODS&#39;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="s1">&#39;SELLER_COUNTRY_CODE&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;SHOW_ALL_USERS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;SITE_ADDRESS&#39;</span><span class="p">:</span> <span class="s1">&#39;Default address&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;SITE_EMAIL&#39;</span><span class="p">:</span> <span class="s1">&#39;Default email&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;SITE_LOGO&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;SITE_NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;Waldur MasterMind&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;SITE_PHONE&#39;</span><span class="p">:</span> <span class="s1">&#39;Default phone&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;TOKEN_KEY&#39;</span><span class="p">:</span> <span class="s1">&#39;x-auth-token&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;TOKEN_LIFETIME&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">3600</span><span class="p">),</span>
+ <span class="s1">&#39;USE_ATOMIC_TRANSACTION&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;VALIDATE_INVITATION_EMAIL&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="allow_signup_without_invitation">ALLOW_SIGNUP_WITHOUT_INVITATION</h4>
+<p>Type: bool</p>
+<p>Allow to signup without an invitation.</p>
+<h4 id="attachment_link_max_age">ATTACHMENT_LINK_MAX_AGE</h4>
+<p>Type: timedelta</p>
+<p>Max age of secure token for media download.</p>
+<h4 id="authentication_methods">AUTHENTICATION_METHODS</h4>
+<p>Type: List[str]</p>
+<p>List of enabled authentication methods.</p>
+<h4 id="backend_fields_editable">BACKEND_FIELDS_EDITABLE</h4>
+<p>Type: bool</p>
+<p>Allows to control /admin writable fields. If this flag is disabled it is impossible to edit any field that corresponds to backend value via /admin. Such restriction allows to save information from corruption.</p>
+<h4 id="countries">COUNTRIES</h4>
+<p>Type: List[str]</p>
+<p>It is used in organization creation dialog in order to limit country choices to predefined set.</p>
+<h4 id="create_default_project_on_organization_creation">CREATE_DEFAULT_PROJECT_ON_ORGANIZATION_CREATION</h4>
+<p>Type: bool</p>
+<p>Enables generation of the first project on organization creation.</p>
+<h4 id="currency_name">CURRENCY_NAME</h4>
+<p>Type: str</p>
+<p>It is used in marketplace order details and invoices for currency formatting.</p>
+<h4 id="email_change_max_age">EMAIL_CHANGE_MAX_AGE</h4>
+<p>Type: timedelta</p>
+<p>Max age of change email request.</p>
+<h4 id="enable_accounting_start_date">ENABLE_ACCOUNTING_START_DATE</h4>
+<p>Type: bool</p>
+<p>Allows to enable accounting for organizations using value of accounting_start_date field.</p>
+<h4 id="enable_geoip">ENABLE_GEOIP</h4>
+<p>Type: bool</p>
+<p>Enable detection of coordinates of virtual machines.</p>
+<h4 id="extensions_autoregister">EXTENSIONS_AUTOREGISTER</h4>
+<p>Type: bool</p>
+<p>Defines whether extensions should be automatically registered.</p>
+<h4 id="homeport_url">HOMEPORT_URL</h4>
+<p>Type: str</p>
+<p>It is used for rendering callback URL in HomePort.</p>
+<h4 id="http_chunk_size">HTTP_CHUNK_SIZE</h4>
+<p>Type: int</p>
+<p>Chunk size for resource fetching from backend API. It is needed in order to avoid too long HTTP request error.</p>
+<h4 id="initial_customer_agreement_number">INITIAL_CUSTOMER_AGREEMENT_NUMBER</h4>
+<p>Type: int</p>
+<p>Allows to tweak initial value of agreement number. It is assumed that organization owner should accept terms of services when organization is registered via Waldur HomePort.</p>
+<h4 id="invitations_enabled">INVITATIONS_ENABLED</h4>
+<p>Type: bool</p>
+<p>Allows to disable invitations feature.</p>
+<h4 id="invitation_create_missing_user">INVITATION_CREATE_MISSING_USER</h4>
+<p>Type: bool</p>
+<p>Allow to create FreeIPA user using details specified in invitation if user does not exist yet.</p>
+<h4 id="invitation_disable_multiple_roles">INVITATION_DISABLE_MULTIPLE_ROLES</h4>
+<p>Type: bool</p>
+<p>Do not allow user to grant multiple roles in the same project or organization using invitation.</p>
+<h4 id="invitation_lifetime">INVITATION_LIFETIME</h4>
+<p>Type: timedelta</p>
+<p>Defines for how long invitation remains valid.</p>
+<h4 id="invitation_max_age">INVITATION_MAX_AGE</h4>
+<p>Type: Optional[timedelta]</p>
+<p>Max age of invitation token. It is used in approve and reject actions.</p>
+<h4 id="logging_report_directory">LOGGING_REPORT_DIRECTORY</h4>
+<p>Type: str</p>
+<p>Directory where log files are located.</p>
+<h4 id="logging_report_interval">LOGGING_REPORT_INTERVAL</h4>
+<p>Type: timedelta</p>
+<p>Files older that specified interval are filtered out.</p>
+<h4 id="native_name_enabled">NATIVE_NAME_ENABLED</h4>
+<p>Type: bool</p>
+<p>Allows to render native name field in customer and user forms.</p>
+<h4 id="notifications_profile_changes">NOTIFICATIONS_PROFILE_CHANGES</h4>
+<p>Type: dict</p>
+<p>Allows enabling notifications about profile changes of organization owners.</p>
+<h4 id="notification_subject">NOTIFICATION_SUBJECT</h4>
+<p>Type: str</p>
+<p>It is used as a subject of email emitted by event logging hook.</p>
+<h4 id="only_staff_can_invite_users">ONLY_STAFF_CAN_INVITE_USERS</h4>
+<p>Type: bool</p>
+<p>Allow to limit invitation management to staff only.</p>
+<h4 id="only_staff_manages_services">ONLY_STAFF_MANAGES_SERVICES</h4>
+<p>Type: bool</p>
+<p>Allows to restrict provider management only to staff users.</p>
+<h4 id="owners_can_manage_owners">OWNERS_CAN_MANAGE_OWNERS</h4>
+<p>Type: bool</p>
+<p>Enables organization owners to manage other organization owners.</p>
+<h4 id="owner_can_manage_customer">OWNER_CAN_MANAGE_CUSTOMER</h4>
+<p>Type: bool</p>
+<p>Enables organization owners to create an organization.</p>
+<h4 id="protect_user_details_for_registration_methods">PROTECT_USER_DETAILS_FOR_REGISTRATION_METHODS</h4>
+<p>Type: List[str]</p>
+<p>List of authentication methods which are not allowed to update user details.</p>
+<h4 id="seller_country_code">SELLER_COUNTRY_CODE</h4>
+<p>Type: Optional[str]</p>
+<p>Specifies seller legal or effective country of registration or residence as an ISO 3166-1 alpha-2 country code. It is used for computing VAT charge rate.</p>
+<h4 id="show_all_users">SHOW_ALL_USERS</h4>
+<p>Type: bool</p>
+<p>Indicates whether user can see all other users in <code>api/users/</code> endpoint.</p>
+<h4 id="site_address">SITE_ADDRESS</h4>
+<p>Type: str</p>
+<p>It is used in marketplace order header.</p>
+<h4 id="site_email">SITE_EMAIL</h4>
+<p>Type: str</p>
+<p>It is used in marketplace order header.</p>
+<h4 id="site_logo">SITE_LOGO</h4>
+<p>Type: Optional[str]</p>
+<p>It is used in marketplace order header.</p>
+<h4 id="site_name">SITE_NAME</h4>
+<p>Type: str</p>
+<p>It is used in email notifications in order to refer to the current deployment in user-friendly way.</p>
+<h4 id="site_phone">SITE_PHONE</h4>
+<p>Type: str</p>
+<p>It is used in marketplace order header.</p>
+<h4 id="token_key">TOKEN_KEY</h4>
+<p>Type: str</p>
+<p>Header for token authentication.</p>
+<h4 id="token_lifetime">TOKEN_LIFETIME</h4>
+<p>Type: timedelta</p>
+<p>Defines for how long user token should remain valid if there was no action from user.</p>
+<h4 id="use_atomic_transaction">USE_ATOMIC_TRANSACTION</h4>
+<p>Type: bool</p>
+<p>Wrap action views in atomic transaction.</p>
+<h4 id="validate_invitation_email">VALIDATE_INVITATION_EMAIL</h4>
+<p>Type: bool</p>
+<p>Ensure that invitation and user emails match.</p>
+<h2 id="waldur_freeipa-plugin">WALDUR_FREEIPA plugin</h2>
+<p>Default value: 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">WALDUR_FREEIPA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BLACKLISTED_USERNAMES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;root&#39;</span><span class="p">],</span>
+ <span class="s1">&#39;ENABLED&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;GROUPNAME_PREFIX&#39;</span><span class="p">:</span> <span class="s1">&#39;waldur_&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;GROUP_SYNCHRONIZATION_ENABLED&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;HOSTNAME&#39;</span><span class="p">:</span> <span class="s1">&#39;ipa.example.com&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;USERNAME&#39;</span><span class="p">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;USERNAME_PREFIX&#39;</span><span class="p">:</span> <span class="s1">&#39;waldur_&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;VERIFY_SSL&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="blacklisted_usernames">BLACKLISTED_USERNAMES</h4>
+<p>Type: list</p>
+<p>List of username that users are not allowed to select</p>
+<h4 id="enabled">ENABLED</h4>
+<p>Type: bool</p>
+<p>Enable integration of identity provisioning in configured FreeIPA</p>
+<h4 id="groupname_prefix">GROUPNAME_PREFIX</h4>
+<p>Type: str</p>
+<p>Prefix to be appended to all group names created in FreeIPA by Waldur</p>
+<h4 id="group_synchronization_enabled">GROUP_SYNCHRONIZATION_ENABLED</h4>
+<p>Type: bool</p>
+<p>Optionally disable creation of user groups in FreeIPA matching Waldur structure</p>
+<h4 id="hostname">HOSTNAME</h4>
+<p>Type: str</p>
+<p>Hostname of FreeIPA server</p>
+<h4 id="password">PASSWORD</h4>
+<p>Type: str</p>
+<p>Password of FreeIPA user with administrative privileges</p>
+<h4 id="username">USERNAME</h4>
+<p>Type: str</p>
+<p>Username of FreeIPA user with administrative privileges</p>
+<h4 id="username_prefix">USERNAME_PREFIX</h4>
+<p>Type: str</p>
+<p>Prefix to be appended to all usernames created in FreeIPA by Waldur</p>
+<h4 id="verify_ssl">VERIFY_SSL</h4>
+<p>Type: bool</p>
+<p>Validate TLS certificate of FreeIPA web interface / REST API</p>
+<h2 id="waldur_hpc-plugin">WALDUR_HPC plugin</h2>
+<p>Default value: 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">WALDUR_HPC</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ENABLED&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;EXTERNAL_AFFILIATIONS&#39;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="s1">&#39;EXTERNAL_CUSTOMER_UUID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;EXTERNAL_EMAIL_PATTERNS&#39;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="s1">&#39;INTERNAL_AFFILIATIONS&#39;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="s1">&#39;INTERNAL_CUSTOMER_UUID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;INTERNAL_EMAIL_PATTERNS&#39;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="s1">&#39;INTERNAL_LIMITS&#39;</span><span class="p">:</span> <span class="p">{},</span>
+ <span class="s1">&#39;OFFERING_UUID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;PLAN_UUID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="enabled_1">ENABLED</h4>
+<p>Type: bool</p>
+<p>Enable HPC-specific hooks in Waldur deployment</p>
+<h4 id="external_affiliations">EXTERNAL_AFFILIATIONS</h4>
+<p>Type: List[str]</p>
+<p>List of user affiliations (eduPersonScopedAffiliation fields) that define if the user belongs to external organization.</p>
+<h4 id="external_customer_uuid">EXTERNAL_CUSTOMER_UUID</h4>
+<p>Type: str</p>
+<p>UUID of a Waldur organization (aka customer) where new external users would be added</p>
+<h4 id="external_email_patterns">EXTERNAL_EMAIL_PATTERNS</h4>
+<p>Type: List[str]</p>
+<p>List of user email patterns (as regex) that define if the user belongs to external organization.</p>
+<h4 id="internal_affiliations">INTERNAL_AFFILIATIONS</h4>
+<p>Type: List[str]</p>
+<p>List of user affiliations (eduPersonScopedAffiliation fields) that define if the user belongs to internal organization.</p>
+<h4 id="internal_customer_uuid">INTERNAL_CUSTOMER_UUID</h4>
+<p>Type: str</p>
+<p>UUID of a Waldur organization (aka customer) where new internal users would be added</p>
+<h4 id="internal_email_patterns">INTERNAL_EMAIL_PATTERNS</h4>
+<p>Type: List[str]</p>
+<p>List of user email patterns (as regex) that define if the user belongs to internal organization.</p>
+<h4 id="internal_limits">INTERNAL_LIMITS</h4>
+<p>Type: dict</p>
+<p>Overrided default values for SLURM offering to be created for users belonging to internal organization.</p>
+<h4 id="offering_uuid">OFFERING_UUID</h4>
+<p>Type: str</p>
+<p>UUID of a Waldur SLURM offering, which will be used for creating allocations for users</p>
+<h4 id="plan_uuid">PLAN_UUID</h4>
+<p>Type: str</p>
+<p>UUID of a Waldur SLURM offering plan, which will be used for creating allocations for users</p>
+<h2 id="waldur_marketplace-plugin">WALDUR_MARKETPLACE plugin</h2>
+<p>Default value: 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">WALDUR_MARKETPLACE</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ADMIN_CAN_APPROVE_ORDER&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;ANONYMOUS_USER_CAN_VIEW_OFFERINGS&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;DISABLE_SENDING_NOTIFICATIONS_ABOUT_RESOURCE_UPDATE&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;ENABLE_STALE_RESOURCE_NOTIFICATIONS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;MANAGER_CAN_APPROVE_ORDER&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;NOTIFY_ABOUT_RESOURCE_CHANGE&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;NOTIFY_STAFF_ABOUT_APPROVALS&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;OWNER_CAN_APPROVE_ORDER&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;OWNER_CAN_REGISTER_SERVICE_PROVIDER&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;PLAN_TEMPLATE&#39;</span><span class="p">:</span> <span class="s1">&#39;Plan: {{ plan.name }}{</span><span class="si">% f</span><span class="s1">or component in components %}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                  <span class="s1">&#39;{{component.name}}; amount: {{component.amount}}; price: &#39;</span>
+                  <span class="s1">&#39;{{component.price|floatformat }};{</span><span class="si">% e</span><span class="s1">ndfor %}&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;THUMBNAIL_SIZE&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">)}</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="admin_can_approve_order">ADMIN_CAN_APPROVE_ORDER</h4>
+<p>Type: bool</p>
+<p>If true, orders for resource can be approved by admin of the customer project</p>
+<h4 id="anonymous_user_can_view_offerings">ANONYMOUS_USER_CAN_VIEW_OFFERINGS</h4>
+<p>Type: bool</p>
+<p>Allow anonymous users to see shared offerings in active, paused and archived states</p>
+<h4 id="disable_sending_notifications_about_resource_update">DISABLE_SENDING_NOTIFICATIONS_ABOUT_RESOURCE_UPDATE</h4>
+<p>Type: bool</p>
+<p>Disable only resource update events.</p>
+<h4 id="enable_stale_resource_notifications">ENABLE_STALE_RESOURCE_NOTIFICATIONS</h4>
+<p>Type: bool</p>
+<p>Enable reminders to owners about resources of shared offerings that have not generated any cost for the last 3 months.</p>
+<h4 id="manager_can_approve_order">MANAGER_CAN_APPROVE_ORDER</h4>
+<p>Type: bool</p>
+<p>If true, orders for resource can be approved by manager of the customer project</p>
+<h4 id="notify_about_resource_change">NOTIFY_ABOUT_RESOURCE_CHANGE</h4>
+<p>Type: bool</p>
+<p>If true, notify users about resource changes from Marketplace perspective. Can generate duplicate events if plugins also log</p>
+<h4 id="notify_staff_about_approvals">NOTIFY_STAFF_ABOUT_APPROVALS</h4>
+<p>Type: bool</p>
+<p>If true, users with staff role are notified when request for order approval is generated</p>
+<h4 id="owner_can_approve_order">OWNER_CAN_APPROVE_ORDER</h4>
+<p>Type: bool</p>
+<p>If true, orders for resource can be approved by custom organization owner.</p>
+<h4 id="owner_can_register_service_provider">OWNER_CAN_REGISTER_SERVICE_PROVIDER</h4>
+<p>Type: bool</p>
+<p>Allow organization owner to request or mark its organization as service provider</p>
+<h4 id="plan_template">PLAN_TEMPLATE</h4>
+<p>Type: str</p>
+<p>Template for a plan field</p>
+<h4 id="thumbnail_size">THUMBNAIL_SIZE</h4>
+<p>Type: tuple</p>
+<p>Size of the thumbnail to generate when screenshot is uploaded for an offering.</p>
+<h2 id="waldur_pid-plugin">WALDUR_PID plugin</h2>
+<p>Default value: 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">WALDUR_PID</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DATACITE&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;API_URL&#39;</span><span class="p">:</span> <span class="s1">&#39;https://example.com&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;COLLECTION_DOI&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;PREFIX&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;PUBLISHER&#39;</span><span class="p">:</span> <span class="s1">&#39;Waldur&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;REPOSITORY_ID&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}}</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="datacite">DATACITE</h4>
+<p>Type: dict</p>
+<p>Settings for integration of Waldur with Datacite PID service. Collection DOI is used to aggregate generated DOIs.</p>
+<h2 id="waldur_slurm-plugin">WALDUR_SLURM plugin</h2>
+<p>Default value: 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">WALDUR_SLURM</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ALLOCATION_PREFIX&#39;</span><span class="p">:</span> <span class="s1">&#39;waldur_allocation_&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;CUSTOMER_PREFIX&#39;</span><span class="p">:</span> <span class="s1">&#39;waldur_customer_&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;DEFAULT_LIMITS&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;CPU&#39;</span><span class="p">:</span> <span class="mi">16000</span><span class="p">,</span> <span class="s1">&#39;GPU&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="s1">&#39;RAM&#39;</span><span class="p">:</span> <span class="mi">102400000</span><span class="p">},</span>
+ <span class="s1">&#39;ENABLED&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;PRIVATE_KEY_PATH&#39;</span><span class="p">:</span> <span class="s1">&#39;/etc/waldur/id_rsa&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;PROJECT_PREFIX&#39;</span><span class="p">:</span> <span class="s1">&#39;waldur_project_&#39;</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="allocation_prefix">ALLOCATION_PREFIX</h4>
+<p>Type: str</p>
+<p>Prefix for SLURM account name corresponding to Waldur allocation</p>
+<h4 id="customer_prefix">CUSTOMER_PREFIX</h4>
+<p>Type: str</p>
+<p>Prefix for SLURM account name corresponding to Waldur organization.</p>
+<h4 id="default_limits">DEFAULT_LIMITS</h4>
+<p>Type: dict</p>
+<p>Default limits of account that are set when SLURM account is provisioned.</p>
+<h4 id="enabled_2">ENABLED</h4>
+<p>Type: bool</p>
+<p>Enable support for SLURM plugin in a deployment</p>
+<h4 id="private_key_path">PRIVATE_KEY_PATH</h4>
+<p>Type: str</p>
+<p>Path to private key file used as SSH identity file for accessing SLURM master.</p>
+<h4 id="project_prefix">PROJECT_PREFIX</h4>
+<p>Type: str</p>
+<p>Prefix for SLURM account name corresponding to Waldur project.</p>
+<h2 id="other-variables">Other variables</h2>
+<h4 id="default_from_email">DEFAULT_FROM_EMAIL</h4>
+<p>Type: str, default value: webmaster@localhost</p>
+<p>Default email address to use for automated correspondence from Waldur.</p>
+<h4 id="import_export_use_transactions">IMPORT_EXPORT_USE_TRANSACTIONS</h4>
+<p>Type: bool, default value: True</p>
+<p>Controls if resource importing should use database transactions. Using transactions makes imports safer as a failure during import won’t import only part of the data set.</p>
+<h4 id="ipstack_access_key">IPSTACK_ACCESS_KEY</h4>
+<p>Type: Optional[str]</p>
+<p>Unique authentication key used to gain access to the ipstack API.</p>
+<h4 id="languages">LANGUAGES</h4>
+<p>Type: List[Tuple[str, str]], default value: (('en', 'English'), ('et', 'Eesti'))</p>
+<p>The list is a list of two-tuples in the format (language code, language name) – for example, ('ja', 'Japanese'). This specifies which languages are available for language selection.</p>
+<h4 id="use_protected_url">USE_PROTECTED_URL</h4>
+<p>Type: bool, default value: False</p>
+<p>Protect media URLs using signed token.</p>
+<h4 id="verify_webhook_requests">VERIFY_WEBHOOK_REQUESTS</h4>
+<p>Type: bool, default value: True</p>
+<p>When webook is processed, requests verifies SSL certificates for HTTPS requests, just like a web browser.</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-05-30
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../identities/summary.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Summary" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Summary
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="general.html" class="md-footer__link md-footer__link--next" aria-label="Next: General Configuration" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              General Configuration
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2021 Waldur team
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+        <script src="../../js/print-site-instant-loading.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
